@@ -1,0 +1,230 @@
+/* ============ PALETA: negro, rojo y azul ============ */
+:root {
+  --negro: #07070b;
+  --negro-2: #0f0f17;
+  --rojo: #e11d48;
+  --rojo-glow: rgba(225, 29, 72, .45);
+  --azul: #3b82f6;
+  --azul-glow: rgba(59, 130, 246, .45);
+  --texto: #ececf3;
+  --texto-suave: #a3a3b8;
+  --degradado: linear-gradient(180deg, var(--rojo), var(--azul));
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'Poppins', sans-serif;
+  background:
+    radial-gradient(circle at 15% 10%, rgba(225, 29, 72, .12), transparent 40%),
+    radial-gradient(circle at 85% 60%, rgba(59, 130, 246, .12), transparent 45%),
+    var(--negro);
+  color: var(--texto);
+  overflow-x: hidden;
+}
+
+/* ============ CORAZONES DE FONDO ============ */
+.hearts { position: fixed; inset: 0; pointer-events: none; z-index: 0; overflow: hidden; }
+.heart {
+  position: absolute; bottom: -40px;
+  animation: subir linear forwards;
+  opacity: .0;
+}
+@keyframes subir {
+  0%   { transform: translateY(0) rotate(0deg); opacity: 0; }
+  10%  { opacity: .55; }
+  100% { transform: translateY(-110vh) rotate(40deg); opacity: 0; }
+}
+
+/* ============ MÚSICA ============ */
+.music-btn {
+  position: fixed; top: 18px; right: 18px; z-index: 50;
+  width: 46px; height: 46px; border-radius: 50%;
+  border: 1px solid var(--azul); background: rgba(7, 7, 11, .7);
+  color: var(--azul); font-size: 20px; cursor: pointer;
+  backdrop-filter: blur(6px); transition: .3s;
+}
+.music-btn:hover { box-shadow: 0 0 18px var(--azul-glow); }
+.music-btn.playing { border-color: var(--rojo); color: var(--rojo); animation: pulso 1.4s infinite; }
+@keyframes pulso { 50% { box-shadow: 0 0 20px var(--rojo-glow); } }
+
+/* ============ PORTADA ============ */
+.hero {
+  position: relative; z-index: 1;
+  min-height: 100vh; display: flex; flex-direction: column;
+  align-items: center; justify-content: center; text-align: center;
+  padding: 40px 20px;
+}
+.hero-small { letter-spacing: 6px; text-transform: uppercase; font-size: .8rem; color: var(--azul); }
+.hero-title {
+  font-family: 'Great Vibes', cursive; font-weight: 400;
+  font-size: clamp(3.2rem, 11vw, 7.5rem); line-height: 1.1; margin: 10px 0;
+  background: linear-gradient(90deg, var(--rojo), #fff 50%, var(--azul));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.hero-title .amp { color: var(--rojo); -webkit-text-fill-color: var(--rojo); }
+.hero-sub { color: var(--texto-suave); font-weight: 300; max-width: 480px; }
+
+.counter { display: flex; gap: 14px; margin-top: 38px; flex-wrap: wrap; justify-content: center; }
+.counter div {
+  min-width: 78px; padding: 14px 10px; border-radius: 14px;
+  background: var(--negro-2); border: 1px solid #23233a;
+}
+.counter div:nth-child(odd)  { box-shadow: 0 0 18px var(--rojo-glow); border-color: var(--rojo); }
+.counter div:nth-child(even) { box-shadow: 0 0 18px var(--azul-glow); border-color: var(--azul); }
+.counter b { display: block; font-size: 1.8rem; }
+.counter span { font-size: .7rem; text-transform: uppercase; letter-spacing: 2px; color: var(--texto-suave); }
+.hero-together { margin-top: 16px; font-size: .85rem; color: var(--texto-suave); }
+
+.scroll-down {
+  margin-top: 50px; color: var(--texto); text-decoration: none; font-size: .9rem;
+  display: flex; flex-direction: column; align-items: center; gap: 8px;
+}
+.scroll-down span { font-size: 1.6rem; color: var(--rojo); animation: rebote 1.6s infinite; }
+@keyframes rebote { 50% { transform: translateY(8px); color: var(--azul); } }
+
+/* ============ CARTA DE INTRODUCCIÓN ============ */
+.letter { position: relative; z-index: 1; padding: 50px 20px 30px; }
+.letter-paper {
+  max-width: 780px; margin: 0 auto; padding: 52px 48px 44px; border-radius: 24px;
+  border: 1.5px solid transparent;
+  background:
+    linear-gradient(160deg, var(--negro-2), var(--negro)) padding-box,
+    linear-gradient(135deg, var(--rojo), var(--azul)) border-box;
+  box-shadow: -10px 10px 40px rgba(225, 29, 72, .18), 10px -10px 40px rgba(59, 130, 246, .18);
+}
+.letter-greeting {
+  font-family: 'Great Vibes', cursive; font-weight: 400; font-size: clamp(2.6rem, 8vw, 4rem);
+  line-height: 1.15; margin-bottom: 26px;
+  background: linear-gradient(90deg, var(--rojo), var(--azul));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.letter-body p {
+  font-weight: 300; font-size: 1.02rem; line-height: 1.95; color: var(--texto);
+  margin-bottom: 1.4em; text-align: left;
+}
+.letter-body p:first-letter { color: var(--rojo); font-weight: 600; }
+.letter-sign {
+  font-family: 'Great Vibes', cursive; font-size: clamp(1.7rem, 5vw, 2.3rem); line-height: 1.4;
+  text-align: right; color: var(--azul); text-shadow: 0 0 18px var(--azul-glow); margin-top: 10px;
+}
+@media (max-width: 760px) {
+  .letter-paper { padding: 36px 24px 32px; }
+  .letter-body p { font-size: .96rem; line-height: 1.85; }
+}
+
+/* ============ LÍNEA DE TIEMPO ============ */
+.timeline { position: relative; z-index: 1; max-width: 1050px; margin: 0 auto; padding: 60px 20px 100px; }
+.timeline::before {
+  content: ''; position: absolute; left: 50%; top: 0; bottom: 0; width: 4px;
+  transform: translateX(-50%); background: var(--degradado); border-radius: 4px;
+  box-shadow: 0 0 16px var(--rojo-glow), 0 0 16px var(--azul-glow);
+}
+
+.item { position: relative; width: 50%; padding: 0 48px; margin-bottom: 70px; }
+.item:nth-child(odd)  { left: 0; }
+.item:nth-child(even) { left: 50%; }
+
+/* punto en la línea */
+.item::before {
+  content: '❤'; position: absolute; top: 24px; width: 34px; height: 34px;
+  display: grid; place-items: center; border-radius: 50%;
+  background: var(--negro); font-size: 15px; z-index: 2;
+}
+.item:nth-child(odd)::before  { right: -17px; color: var(--rojo); border: 2px solid var(--rojo); box-shadow: 0 0 14px var(--rojo-glow); }
+.item:nth-child(even)::before { left: -17px;  color: var(--azul); border: 2px solid var(--azul); box-shadow: 0 0 14px var(--azul-glow); }
+
+/* tarjeta */
+.card {
+  background: linear-gradient(160deg, var(--negro-2), var(--negro));
+  border-radius: 18px; padding: 24px; border: 1px solid #23233a;
+  transition: transform .35s, box-shadow .35s;
+}
+.item:nth-child(odd)  .card { border-top: 3px solid var(--rojo); }
+.item:nth-child(even) .card { border-top: 3px solid var(--azul); }
+.item:nth-child(odd)  .card:hover { transform: translateY(-6px); box-shadow: 0 12px 34px var(--rojo-glow); }
+.item:nth-child(even) .card:hover { transform: translateY(-6px); box-shadow: 0 12px 34px var(--azul-glow); }
+
+/* HISTORIA ARRIBA */
+.card h3 { font-family: 'Great Vibes', cursive; font-weight: 400; font-size: 2.1rem; margin-bottom: 8px; }
+.item:nth-child(odd)  .card h3 { color: var(--rojo); }
+.item:nth-child(even) .card h3 { color: var(--azul); }
+.card p { font-weight: 300; line-height: 1.7; color: var(--texto); margin-bottom: 18px; font-size: .95rem; }
+
+/* FOTO(S) */
+.photos { display: grid; gap: 8px; margin-bottom: 16px; }
+.photos.one  { grid-template-columns: 1fr; max-width: 340px; margin-left: auto; margin-right: auto; }
+.photos.n2   { grid-template-columns: repeat(2, 1fr); }
+.photos.n3   { grid-template-columns: repeat(3, 1fr); }
+.photos img {
+  width: 100%; height: 100%; aspect-ratio: 3/4; object-fit: cover; object-position: center 30%;
+  border-radius: 12px; cursor: zoom-in; transition: transform .4s, filter .4s; filter: saturate(1.05);
+}
+.photos.one img { aspect-ratio: 4/5; }
+.photos img:hover { transform: scale(1.03); filter: saturate(1.3) brightness(1.08); }
+
+/* FRASE ROMÁNTICA DEBAJO DE LA FOTO */
+.phrase {
+  display: block; padding: 12px 6px 0; margin-top: 4px;
+  font-family: 'Great Vibes', cursive; font-size: 1.55rem; line-height: 1.35;
+  text-align: center; font-style: normal;
+}
+.item:nth-child(odd)  .phrase { color: var(--rojo); text-shadow: 0 0 16px var(--rojo-glow); border-top: 1px solid rgba(225, 29, 72, .35); }
+.item:nth-child(even) .phrase { color: var(--azul); text-shadow: 0 0 16px var(--azul-glow); border-top: 1px solid rgba(59, 130, 246, .35); }
+.phrase::before { content: '❝ '; font-size: 1rem; opacity: .7; }
+.phrase::after  { content: ' ❞'; font-size: 1rem; opacity: .7; }
+
+/* animación al aparecer */
+.reveal { opacity: 0; transform: translateY(50px); transition: opacity .9s, transform .9s; }
+.item:nth-child(odd).reveal  { transform: translate(-40px, 40px); }
+.item:nth-child(even).reveal { transform: translate(40px, 40px); }
+.reveal.show { opacity: 1; transform: none !important; }
+
+/* ============ FINAL ============ */
+.finale { position: relative; z-index: 1; text-align: center; padding: 90px 20px 120px; }
+.finale h2 {
+  font-family: 'Great Vibes', cursive; font-weight: 400; font-size: clamp(2.6rem, 8vw, 5rem);
+  background: linear-gradient(90deg, var(--rojo), var(--azul));
+  -webkit-background-clip: text; background-clip: text; color: transparent;
+}
+.finale p { max-width: 520px; margin: 14px auto 30px; color: var(--texto-suave); line-height: 1.7; }
+.surprise-btn {
+  padding: 14px 36px; border: none; border-radius: 40px; cursor: pointer;
+  font: 600 1rem 'Poppins', sans-serif; color: #fff;
+  background: linear-gradient(90deg, var(--rojo), var(--azul));
+  box-shadow: 0 0 24px var(--rojo-glow); transition: transform .3s;
+}
+.surprise-btn:hover { transform: scale(1.08); }
+.finale .finale-msg {
+  margin: 28px auto 0; font-family: 'Great Vibes', cursive; font-size: clamp(1.8rem, 6vw, 2.8rem);
+  color: var(--rojo); text-shadow: 0 0 18px var(--rojo-glow);
+  opacity: 0; transform: translateY(14px); transition: opacity .8s, transform .8s;
+}
+.finale .finale-msg.show { opacity: 1; transform: none; }
+
+/* ============ VISOR DE FOTOS ============ */
+.lightbox {
+  position: fixed; inset: 0; z-index: 100; display: none;
+  align-items: center; justify-content: center;
+  background: rgba(0, 0, 0, .93);
+}
+.lightbox.open { display: flex; }
+.lightbox figure { max-width: 88vw; text-align: center; }
+.lightbox img { max-width: 100%; max-height: 78vh; border-radius: 12px; box-shadow: 0 0 40px var(--azul-glow); }
+.lightbox figcaption { margin-top: 14px; color: var(--texto-suave); font-size: .9rem; }
+.lb-close, .lb-nav {
+  position: absolute; background: none; border: none; color: var(--texto); cursor: pointer; transition: .2s;
+}
+.lb-close { top: 18px; right: 28px; font-size: 2.6rem; }
+.lb-nav { top: 50%; transform: translateY(-50%); font-size: 2.2rem; padding: 20px; }
+.lb-prev { left: 8px; } .lb-next { right: 8px; }
+.lb-close:hover, .lb-nav:hover { color: var(--rojo); }
+
+/* ============ CELULAR ============ */
+@media (max-width: 760px) {
+  .timeline::before { left: 22px; }
+  .item, .item:nth-child(even) { width: 100%; left: 0; padding: 0 0 0 58px; }
+  .item:nth-child(odd)::before, .item:nth-child(even)::before { left: 5px; right: auto; }
+  .item:nth-child(odd).reveal, .item:nth-child(even).reveal { transform: translateY(40px); }
+}

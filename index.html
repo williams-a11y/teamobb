@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Nuestra Historia</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- Corazones flotando de fondo -->
+  <div class="hearts" id="hearts" aria-hidden="true"></div>
+
+  <!-- Botón de música (opcional: pon tu canción en audio/cancion.mp3) -->
+  <button class="music-btn" id="musicBtn" title="Música" aria-label="Música">♪</button>
+  <audio id="audio" loop preload="none" src="audio/cancion.mp3"></audio>
+
+  <!-- PORTADA -->
+  <header class="hero">
+    <p class="hero-small">Nuestra historia</p>
+    <h1 class="hero-title"><span id="nameA">Él</span> <span class="amp">&amp;</span> <span id="nameB">Ella</span></h1>
+    <p class="hero-sub" id="heroSub">Cada momento contigo es mi favorito</p>
+
+    <div class="counter" id="counter">
+      <div><b id="cDays">0</b><span>días</span></div>
+      <div><b id="cHours">0</b><span>horas</span></div>
+      <div><b id="cMin">0</b><span>min</span></div>
+      <div><b id="cSec">0</b><span>seg</span></div>
+    </div>
+    <p class="hero-together">juntos desde el <span id="startLabel"></span></p>
+
+    <a href="#letter" class="scroll-down">Descubre nuestra historia<span>↓</span></a>
+  </header>
+
+  <!-- CARTA DE INTRODUCCIÓN (el texto se edita en js/script.js → CONFIG.carta) -->
+  <section class="letter" id="letter">
+    <article class="letter-paper">
+      <h2 class="letter-greeting reveal" id="letterGreeting"></h2>
+      <div class="letter-body" id="letterBody"></div>
+      <p class="letter-sign reveal" id="letterSign"></p>
+    </article>
+  </section>
+
+  <!-- LÍNEA DE TIEMPO (se genera desde js/script.js) -->
+  <main class="timeline" id="timeline"></main>
+
+  <!-- FINAL -->
+  <section class="finale">
+    <h2 id="finalTitle">Y la historia continúa...</h2>
+    <p id="finalText">Gracias por cada día. Te amo.</p>
+    <button class="surprise-btn" id="surpriseBtn">Toca aquí ❤</button>
+    <p class="finale-msg" id="finaleMsg"></p>
+  </section>
+
+  <!-- VISOR DE FOTOS -->
+  <div class="lightbox" id="lightbox">
+    <button class="lb-close" id="lbClose" aria-label="Cerrar">&times;</button>
+    <button class="lb-nav lb-prev" id="lbPrev" aria-label="Anterior">&#10094;</button>
+    <figure>
+      <img id="lbImg" alt="">
+      <figcaption id="lbCap"></figcaption>
+    </figure>
+    <button class="lb-nav lb-next" id="lbNext" aria-label="Siguiente">&#10095;</button>
+  </div>
+
+  <script src="js/script.js"></script>
+</body>
+</html>
